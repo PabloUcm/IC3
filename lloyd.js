@@ -5,12 +5,9 @@ let centroidMatrix = [[], [4.6, 3.0, 4.0, 0.0], [6.8, 3.4, 4.6, 0.7]];
 let OldCentroidMatrix = [[], [4.6, 3.0, 4.0, 0.0], [6.8, 3.4, 4.6, 0.7]];
 
 function refreshClass(v, sample) {
-    let sol = 0;
     let sampleMatrix = math.matrix([[Number(sample[0])], [Number(sample[1])], [Number(sample[2])], [Number(sample[3])]]);
-    let c = math.matrix([[v[0]], [v[1]], [v[2]], [v[3]]]);
-    let subtractAndkMultiply = math.multiply(math.subtract(sampleMatrix, c), 0.1);
-    sol = math.add(c, subtractAndkMultiply);
-    return sol;
+    let subtractAndkMultiply = math.multiply(math.subtract(sampleMatrix, math.matrix([[v[0]], [v[1]], [v[2]], [v[3]]])), 0.1);
+    return math.add(math.matrix([[v[0]], [v[1]], [v[2]], [v[3]]]), subtractAndkMultiply);;
 }
 
 function updateCentroids(data) {
