@@ -82,7 +82,7 @@ function solveLloyd() {
     let sample = document.getElementById("ejemplo").value.split(",");
 
     let resultado1 = (1 / calculateD(1, sample)) / ((1 / calculateD(1, sample)) + (1 / calculateD(2, sample)));
-    let resultado1 = (1 / calculateD(2, sample)) / ((1 / calculateD(1, sample)) + (1 / calculateD(2, sample)));
+    let resultado2 = (1 / calculateD(2, sample)) / ((1 / calculateD(1, sample)) + (1 / calculateD(2, sample)));
 
     if (resultado1 > resultado2)
       console.log('Iris-setosa');
