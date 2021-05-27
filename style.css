@@ -139,6 +139,23 @@ input[type="text" i] {
     width: 550px;
     border-radius: 5px;
 }
+#errorSpanK{
+color: red;
+font-size: 1.5em;
+margin-left:30px;
+}
+#errorSpanL{
+  color: red;
+  font-size: 1.5em;
+  margin-left:30px;
+  }
+
+#errorSpanB{
+  color: red;
+  font-size: 1.5em;
+  margin-left:30px;
+  }
+
 .res{
     font-size: 1.5em;
 }
@@ -166,6 +183,9 @@ input[type="text" i] {
 }
 .result{
     padding: 10px;
+    margin-left:50px;
+    padding-left:20px;
+    padding-right:50px;
     background-color: greenyellow;
     color: royalblue;
     font-size: 20px;
