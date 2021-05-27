@@ -3,32 +3,52 @@ const NAttr = 4;
 var bayesClassesFile = null;
 var bayesClassesInfo = [];
 
-function init() {
-    console.log('Medias');
-    const medias = [];
-    for (var i = 0; i < bayesClassesInfo.length; i++) {
-        medias.push(calculateMedia(bayesClassesInfo[i].data));
+function verifyB() {
+    let error = false;
+    let content = document.getElementById('sampleBayes').value;
+    let splitContent = content.split(',');
+    for(var i=0; i < splitContent.length; i++){
+        if(isNaN(parseInt(splitContent[i]))){
+            document.getElementById('errorSpanB').innerHTML = 'Caracteres inválidos';
+            error = true;
+        }
     }
-    console.log(medias);
-
-
-    console.log('Covariances');
-    const covariances = [];
-    for (var i = 0; i < bayesClassesInfo.length; i++) {
-        covariances.push(calculateCovariance(bayesClassesInfo[i].data, medias[i]));
+    if(!error){
+        if(splitContent.length != 4){
+            document.getElementById('errorSpanB').innerHTML = 'Longitud de los datos errónea'
+        }else{
+            document.getElementById('errorSpanB').innerHTML = ''
+            let sample = [[]];
+            for(var i=0; i < splitContent.length; i++) sample[0].push([splitContent[i]]);
+        
+            console.log('Medias');
+            const medias = [];
+            for (var i = 0; i < bayesClassesInfo.length; i++) {
+                medias.push(calculateMedia(bayesClassesInfo[i].data));
+            }
+            console.log(medias);
+        
+        
+            console.log('Covariances');
+            const covariances = [];
+            for (var i = 0; i < bayesClassesInfo.length; i++) {
+                covariances.push(calculateCovariance(bayesClassesInfo[i].data, medias[i]));
+            }
+            console.log(covariances);
+        
+            console.log('Distances');
+            // const distances = calculateDistance([[5.1],[3.5],[1.4],[0.2]], covariances, medias);
+            const distances = calculateDistance(sample[0], covariances, medias);
+            // const distances = calculateDistance([[5.0],[3.4],[1.5],[0.2]], covariances, medias);
+            console.log(distances);
+        
+        
+            const minorDistance = getMinorD(distances);
+            console.log(`La menor distancia es ${minorDistance.n} `);
+            console.log(`La muestra [xxx] pertenece a ${minorDistance.c}`);
+            document.getElementById('resultB').innerHTML = minorDistance.c;
+        }
     }
-    console.log(covariances);
-
-    console.log('Distances');
-    // const distances = calculateDistance([[5.1],[3.5],[1.4],[0.2]], covariances, medias);
-    const distances = calculateDistance([[6.9], [3.1], [4.9], [1.5]], covariances, medias);
-    // const distances = calculateDistance([[5.0],[3.4],[1.5],[0.2]], covariances, medias);
-    console.log(distances);
-
-
-    const minorDistance = getMinorD(distances);
-    console.log(`La menor distancia es ${minorDistance.n} `);
-    console.log(`La muestra [xxx] pertenece a ${minorDistance.c}`);
 }
 
 // m = 1/n * Sum(1,n) xi
@@ -138,7 +158,6 @@ function processFile() {
             bayesClassesInfo[idx].data.push(splitContent);
         }
     }
-    console.log(bayesClassesInfo);
 }
 
 function readBayesFile() {
@@ -151,6 +170,7 @@ function readBayesFile() {
     let reader = new FileReader();
 
     reader.addEventListener('load', function (e) {
+        console.log('Fichero b leido');
         bayesClassesFile = e.target.result;
         processFile();
     });
@@ -161,8 +181,3 @@ function readBayesFile() {
 
     reader.readAsText(file);
 }
-
-
-window.onload = function () {
-    document.getElementById('read-data-button').addEventListener('click', readBayesFile);
-};

@@ -3,63 +3,71 @@
 <script src="bayes.js"></script>
 <script src="lloyd.js"></script>
 <script src="k-medias.js"></script>
+<script>
+    {
+        window.onload = function () {
+            document.getElementById('read-data-button').addEventListener('click', function (){
+                readKMediasFile();
+                readlloydFile();
+                readBayesFile();
+            });
+        };
+    }
+</script>
 <link rel="stylesheet" href="style.css">
-
+<head>
+    <meta charset="utf-8"> 
+</head>
 <body>
+    <label for="dataFile-input" id="data" class="button_principal"><img src="descarga.png">Choose
+        file</label>
+    <input type="file" id="dataFile-input" />
+    <button id="read-data-button" class="button_principal2"><img id="imgSelect1" src="check.png">Read</button>
 
     <div id="principal">
         <div>
-
             <div>
                 <h1>Algoritmo Bayes</h1>
-                <label for="dataFile-input" id="data" class="button_principal"><img src="descarga.png">Choose
-                    file</label>
-                <input type="file" id="dataFile-input" />
-                <button id="read-data-button" class="button_principal2"><img id="imgSelect1"
-                        src="check.png">Read</button>
                 <div>
                     <label for="ejemplo">
-                        <input type="text" id="sampleBayes" placeholder="Introduce una muestra, por ejemplo:....." />
-                        <button onclick="init()" class="button_principal2">Verificar</button>
+                        <input type="text" class='sampleInput' id="sampleBayes" placeholder="Introduce una muestra, por ejemplo:....." disabled/>
+                        <button onclick="verifyB()" class="button_principal2">Verificar</button>
+                        <div class="resfinal">
+                            <div><label class="res">Resultado</label></div>
+                        <div>
+                            <span class="result" id="resultB"></span>
+                        </div>
+                        <span id="errorSpanB"></span>
                 </div>
             </div>
 
             <div>
                 <h1 class="espacio">Algoritmo Lloyd</h1>
-                <div>
-                    <label for="dataFile-input2" id="data" class="button_principal"><img src="descarga.png">Choose
-                        file</label>
-                    <input type="file" id="dataFile-input2" />
-                    <button id="read-data-button2" class="button_principal2"><img id="imgSelect1"
-                            src="check.png">Read</button>
-
-                </div>
 
                 <label for="ejemplo">
-                    <input type="text" id="ejemplo" placeholder="Introduce una muestra, por ejemplo:....." />
-                    <button onclick="solveLloyd()" class="button_principal2">Verificar</button>
+                    <input type="text" class='sampleInput' id="ejemplol" placeholder="Introduce una muestra, por ejemplo:....."  disabled/>
+                    <button onclick="verifyL()" class="button_principal2">Verificar</button>
                     <div class="resfinal">
-                            <div><label class="res">Resultado</label></div>
-                        <div>
-                            <div class="result" id="versicolorvacio" hidden><label></label></div>
-                            <div class="result" id="setosalloyd" hidden><label>Iris-setosa</label></div>
-                            <div class="result" id="versicolorlloyd" hidden><label>Iris-versicolor</label></div>
-                        </div>
-
+                        <div><label class="res">Resultado</label></div>
+                    <div>
+                        <span class="result" id="resultL"></span>
                     </div>
+                    <span id="errorSpanL"></span>
             </div>
 
             <div>
                 <h1>Algoritmo K-Medias</h1>
-                <label for="dataFile-input-kmedias" id="data" class="button_principal"><img src="descarga.png">Choose
-                    file</label>
-                <input type="file" id="dataFile-input-kmedias"/>
-                <button id="read-data-button-kmedias" class="button_principal2"><img id="imgSelect1"
-                        src="check.png">Read</button>
                 <div>
                     <label for="ejemplo">
-                        <input type="text" id="ejemplokmedias" placeholder="Introduce una muestra, por ejemplo:....." />
-                        <button onclick="solve()" class="button_principal2">Verificar</button>
+                        <input type="text" class='sampleInput' id="ejemplokmedias" placeholder="Introduce una muestra, por ejemplo:....."  disabled/>
+                        <button onclick="verifyK()" class="button_principal2">Verificar</button>
+                        <div class="resfinal">
+                            <div><label class="res">Resultado</label></div>
+                        <div>
+                            <span class="result" id="resultK"></span>
+                        </div>
+                        <span id="errorSpanK"></span>
+                    </div>
                 </div>
             </div>
 

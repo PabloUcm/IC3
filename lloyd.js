@@ -54,21 +54,20 @@ function lloyd() {
 }
 
 function readlloydFile() {
-    if (document.querySelector("#dataFile-input2").files.length == 0) {
+    if (document.querySelector("#dataFile-input").files.length == 0) {
         alert('Error : No file selected');
         return;
     }
 
-    let file = document.querySelector("#dataFile-input2").files[0];
+    let file = document.querySelector("#dataFile-input").files[0];
     let reader = new FileReader();
 
     reader.addEventListener('load', function (e) {
         bayesClassesFile = e.target.result;
+        console.log('Fichero l leido');
         lloyd();
         let v1 = centroidMatrix[1];
         let v2 = centroidMatrix[2];
-        console.log(v1);
-        console.log(v2)
     });
 
     reader.addEventListener('error', function () {
@@ -78,18 +77,33 @@ function readlloydFile() {
     reader.readAsText(file);
 }
 
-function solveLloyd() {
-    let sample = document.getElementById("ejemplo").value.split(",");
+function verifyL() {
+    let error = false;
+    let content = document.getElementById('ejemplol').value;
+    let sample = content.split(',');
+    for(var i=0; i < sample.length; i++){
+        if(isNaN(parseInt(sample[i]))){
+            document.getElementById('errorSpanL').innerHTML = 'Caracteres inválidos';
+            error = true;
+        }
+    }
 
-    let resultado1 = (1 / calculateD(1, sample)) / ((1 / calculateD(1, sample)) + (1 / calculateD(2, sample)));
-    let resultado2 = (1 / calculateD(2, sample)) / ((1 / calculateD(1, sample)) + (1 / calculateD(2, sample)));
-
-    if (resultado1 > resultado2)
-      console.log('Iris-setosa');
-    else
-        console.log('Iris-versicolor');
-};
-
-window.onload = function () {
-    document.getElementById('read-data-button2').addEventListener('click', readlloydFile);
+    if(!error){
+        if(sample.length != 4){
+            document.getElementById('errorSpanL').innerHTML = 'Longitud de los datos errónea';
+        }else{
+            document.getElementById('errorSpanL').innerHTML = ''
+            let resultado1 = (1 / calculateD(1, sample)) / ((1 / calculateD(1, sample)) + (1 / calculateD(2, sample)));
+            let resultado2 = (1 / calculateD(2, sample)) / ((1 / calculateD(1, sample)) + (1 / calculateD(2, sample)));
+    
+            if (resultado1 > resultado2){
+                console.log('Iris-setosa');
+                document.getElementById('resultL').innerHTML = 'Iris-setosa';
+            }
+            else{
+                console.log('Iris-versicolor');
+                document.getElementById('resultL').innerHTML = 'Iris-versicolor';
+            }
+        }
+    }
 };

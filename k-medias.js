@@ -15,7 +15,6 @@ function startKMedias() {
     let end = false;
     while (!end) {
         let U = calculateU();
-        console.log(U);
         let newCentroid = recalculateCentroid(U);
 
         let v1 = (newCentroid[0][0] - initCentroidMatrix[0][0]) + (newCentroid[0][1] - initCentroidMatrix[0][1]) +
@@ -23,8 +22,6 @@ function startKMedias() {
 
         let v2 = (newCentroid[1][0] - initCentroidMatrix[1][0]) + (newCentroid[1][1] - initCentroidMatrix[1][1]) +
             (newCentroid[1][2] - initCentroidMatrix[1][2]) + (newCentroid[1][3] - initCentroidMatrix[1][3]);
-
-        console.log('VS', v1, v2);
 
         if (v1 < E && v2 < E) end = true;
         initCentroidMatrix = newCentroid;
@@ -43,7 +40,6 @@ function calculateU() {
             for (var z = 0; z < initCentroidMatrix.length; z++) {
                 dList.push(calculateDK(KMediasInfo[i].data[j], initCentroidMatrix[z]));
             }
-            // console.log(dList);
             for (var z = 0; z < dList.length; z++) {
                 U[z].push(calculateP(dList, z));
             }
@@ -97,7 +93,6 @@ function recalculateCentroid(U) {
         d2 += pro2 * fichero[i][3]
     }
 
-    console.log(a,b1,c,d,a2,b2,c2,d2);
     newCentroid = [[[], [], [], []], [[], [], [], []]]
     newCentroid[0][0] = [a / denominatorList[0]];
     newCentroid[0][1] = [b1 / denominatorList[0]];
@@ -109,12 +104,11 @@ function recalculateCentroid(U) {
     newCentroid[1][2] = [c2 / denominatorList[1]];
     newCentroid[1][3] = [d2 / denominatorList[1]];
 
-    console.log(newCentroid);
     return newCentroid;
 }
 
 
-function processFile() {
+function processKFile() {
     classesInfo = [];
     const fileContent = KMediasFile.split('\n');
 
@@ -145,23 +139,25 @@ function processFile() {
             fichero.push(KMediasInfo[i].data[j])
     }
 
-    console.log(KMediasInfo);
 }
 
 function readKMediasFile() {
-    if (document.querySelector("#dataFile-input-kmedias").files.length == 0) {
+    if (document.querySelector("#dataFile-input").files.length == 0) {
         alert('Error : No file selected');
         return;
     }
 
-    let file = document.querySelector("#dataFile-input-kmedias").files[0];
+    let file = document.querySelector("#dataFile-input").files[0];
     let reader = new FileReader();
 
     reader.addEventListener('load', function (e) {
         KMediasFile = e.target.result;
         let v1 = initCentroidMatrix[1];
         let v2 = initCentroidMatrix[2];
-        processFile();
+        console.log('Fichero k leido');
+        let documents = document.getElementsByClassName('sampleInput')
+        for(doc of documents) doc.disabled = false;
+        processKFile();
     });
 
     reader.addEventListener('error', function () {
@@ -171,19 +167,40 @@ function readKMediasFile() {
     reader.readAsText(file);
 }
 
-function solve() {
-    let sample = "5.1,3.5,1.4,0.2".split(",");  //document.getElementById("ejemplokmedias").value.split(",");
-    let d1= calculateDK(sample,initCentroidMatrix[0])
-    let d2= calculateDK(sample,initCentroidMatrix[1])
-    let resultado1 = calculateP([d1,d2],0)
-    let resultado2 = calculateP([d1,d2],1)
+function verifyK() {
+    let error = false;
+    let content = document.getElementById('ejemplokmedias').value;
+    splitContent = content.split(',');
+    for(var i=0; i < splitContent.length; i++){
+        if(isNaN(parseInt(splitContent[i]))){
+            document.getElementById('errorSpanK').innerHTML = 'Caracteres inválidos';
+            error = true;
+        }
+    }
 
-    if (resultado1 > resultado2)
-      console.log('Iris-setosa');
-    else
-        console.log('Iris-versicolor');
-};
-
-window.onload = function () {
-    document.getElementById('read-data-button-kmedias').addEventListener('click', readKMediasFile);
+    if(!error){
+        if(splitContent.length != 4){
+            document.getElementById('errorSpanK').innerHTML = 'Longitud de los datos errónea'
+        }else{
+            document.getElementById('errorSpanK').innerHTML = ''
+            let sample = [[]];
+            for(var i=0; i < splitContent.length; i++){
+                sample[0].push([splitContent[i]])
+            }
+        
+            let d1= calculateDK(sample[0],initCentroidMatrix[0])
+            let d2= calculateDK(sample[0],initCentroidMatrix[1])
+        
+            let resultado1 = calculateP([d1,d2],0)
+            let resultado2 = calculateP([d1,d2],1)
+        
+            if (resultado1 > resultado2){
+                console.log('Iris-setosa');
+                document.getElementById('resultK').innerHTML = 'Iris-setosa';
+            }else{
+                console.log('Iris-versicolor');
+                document.getElementById('resultK').innerHTML = 'Iris-versicolor';
+            }
+        }
+    }
 };
