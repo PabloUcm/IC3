@@ -1,21 +1,61 @@
 <html>
-    <script src ="math.js"></script>
-    <script src="bayes.js"></script>
-    <script src="lloyd.js"></script>
-    <body>
+<script src="math.js"></script>
+<script src="bayes.js"></script>
+<script src="lloyd.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+    <div id="principal">
         <div>
-            <label for="dataFile-input" id="data" class="button_principal">
-            <input type="file" id="dataFile-input" />
-            <button id="read-data-button" class="button_principal2">Read</button>
+
+            <div>
+                <h1>Algoritmo Bayes</h1>
+                <label for="dataFile-input" id="data" class="button_principal"><img src="descarga.png">Choose
+                    file</label>
+                <input type="file" id="dataFile-input" />
+                <button id="read-data-button" class="button_principal2"><img id="imgSelect1"
+                        src="check.png">Read</button>
+                <div>
+                    <label for="ejemplo">
+                        <input type="text" id="sampleBayes" placeholder="Introduce una muestra, por ejemplo:....." />
+                        <button onclick="init()" class="button_principal2">Verificar</button>
+                </div>
+            </div>
+
+            <div>
+                <h1 class="espacio">Algoritmo Lloyd</h1>
+                <div>
+                    <label for="dataFile-input2" id="data" class="button_principal"><img src="descarga.png">Choose
+                        file</label>
+                    <input type="file" id="dataFile-input2" />
+                    <button id="read-data-button2" class="button_principal2"><img id="imgSelect1"
+                            src="check.png">Read</button>
+
+                </div>
+
+                <label for="ejemplo">
+                    <input type="text" id="ejemplo" placeholder="Introduce una muestra, por ejemplo:....." />
+                    <button onclick="solveLloyd()" class="button_principal2">Verificar</button>
+                    <div class="resfinal">
+                            <div><label class="res">Resultado</label></div>
+                        <div>
+                            <div class="result" id="versicolorvacio" hidden><label></label></div>
+                            <div class="result" id="setosalloyd" hidden><label>Iris-setosa</label></div>
+                            <div class="result" id="versicolorlloyd" hidden><label>Iris-versicolor</label></div>
+                        </div>
+
+                    </div>
+
+
+            </div>
+
         </div>
         <div>
-            <label for="dataFile-input2" id="data" class="button_principal">
-            <input type="file" id="dataFile-input2" />
-            <button id="read-data-button2" class="button_principal2">Read</button>
-            <label for="ejemplo" id="data" class="button_principal">
-                <input type="text" id="ejemplo" />
-                <button onclick="solveLloyd()" class="button_principal2">Read</button>
-            
+            <table id="main-table" style="width:50%; border: solid 2px rgb(52, 116, 189); margin:auto;">
+            </table>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

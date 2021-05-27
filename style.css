@@ -1,0 +1,294 @@
+body{
+    height: auto;
+    width: 100%;
+      background-image: linear-gradient(180deg,rgb(75, 138, 211), rgb(197, 222, 243));
+      background-repeat: no-repeat;
+  }
+
+#principal{
+    width: 45%;
+    margin: auto;
+
+}
+
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  #inputArbol{
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+    margin-top:100px;
+  }
+
+  #labelInput{
+    font-size: 1.2em;
+  }
+  #valorInput{
+    width: 500px;
+    padding: 8px;
+    border-radius: 5px;
+  }
+
+  body{
+    height: auto;
+    width: 100%;
+      background-image: linear-gradient(180deg,rgb(75, 138, 211), rgb(197, 222, 243));
+      background-repeat: no-repeat;
+  }
+
+  #print-table-button{
+    padding-left: 43px;
+    padding-right: 43px;
+    font-size: 0.9em;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+  }
+  #start{
+    padding-left: 82px;
+    padding-right: 82px;
+    font-size: 0.9em;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-top: 5px;
+}
+
+#restart{
+  padding-left: 74px;
+  padding-right: 74px;
+  font-size: 0.9em;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  margin-top: 5px;
+}
+
+
+
+  #options{
+    padding: 0.5rem;
+    display: -webkit-box;
+    min-width: 37.5%;
+    justify-content: center;
+
+}
+
+#imgSelect1{
+    visibility: hidden;
+}
+
+#imgSelect2{
+  visibility: hidden;
+}
+
+  h1{
+    color: black;
+    top: 0;
+    margin-left:25%;
+    font-size: 3em;
+   
+}
+
+.espacio{
+    margin-top: 100px;
+}
+#idTitulo{
+  width: 45%;
+}
+
+header{
+  display: flex;
+  height: 230px;
+  /* justify-content: space-between; */
+  /* top: 0; */
+  /* align-items: center; */
+  width: 100%;
+}
+
+.button_principal2 {
+    padding: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 5px;
+    background-color: rgb(52, 116, 189);
+    box-shadow: 4px 4px 4px rgb(37 37 37);
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+input[type="text" i] {
+    padding:5px;
+    width: 600px;
+    border-radius: 5px;
+}
+.res{
+    font-size: 1.5em;
+}
+.resfinal{
+    margin-top: 20px;
+    display:flex;
+}
+
+#versicolorvacio{
+    visibility: hidden;
+}
+
+#setosalloyd{
+    visibility: hidden;
+}
+
+#versicolorlloyd{
+  visibility: visible;
+}
+
+
+.result{
+    padding: 10px;
+    background-color: greenyellow;
+    color: royalblue;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 120px;
+}
+
+img{
+
+  height: 18px;
+}
+
+.button_principal{
+  padding: 10px;
+    border-radius: 5px;
+    background-color: white ;
+    box-shadow: 4px 4px 4px rgb(37 37 37);
+    color: rgb(52, 116, 189);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+ #dataFile-input{
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+ }
+
+ #dataFile-input2{
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+   
+}
+
+ #attrFile-input{
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  margin-bottom: 5px;
+ }
+
+ #data{
+  padding-right: 42px;
+ }
+
+ #read-data-button{
+  padding-left: 22px;
+  padding-right: 38px;
+}
+
+#read-attr-button{
+  padding-right: 17px;
+}
+
+.tree-node{
+  display:flex;
+  flex-direction: column; 
+  text-align:center;
+  align-items: center;
+/*   margin-right: 10px;
+  margin-left: 10px; */
+  margin-bottom: 40px;
+}
+
+#arbol{
+  text-align:center;
+  margin-top: 100px;
+}
+
+.info-div{
+  border: 2px solid black;
+  border-radius: 30px;
+  text-align: center;
+  background-color: cornflowerblue;
+  box-shadow: 4px 4px 4px rgb(37 37 37);
+  color: white;
+  /* padding-top: 0; */
+  padding-bottom: 0;
+  font-size: 0.7em;
+  padding: 5px;
+  margin-bottom: 12px;
+}
+
+.children-box{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.leaf{
+  border: 2px solid black;
+    border-radius: 100%;
+    text-align: center;
+    background-color:lightgreen;
+    box-shadow: 4px 4px 4px rgb(37 37 37);
+    color: white;
+    padding: 20px;
+}
+
+svg{
+  height: 70;
+}
+
+#wrongInput{
+  visibility: hidden;
+  width: 200px;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 20px;
+ 
+}
+#wrongSpan{
+  font-size: 1.5em;
+  color:red;
+}
+
+#wrongTotalInput{
+  visibility: hidden;
+  width: 200px;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 20px;
+ 
+}
+#wrongTotalSpan{
+  font-size: 1.5em;
+  color:red;
+}
