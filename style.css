@@ -136,7 +136,7 @@ header{
 }
 input[type="text" i] {
     padding:5px;
-    width: 600px;
+    width: 550px;
     border-radius: 5px;
 }
 .res{
@@ -159,7 +159,11 @@ input[type="text" i] {
   visibility: visible;
 }
 
-
+#dataFile-input-kmedias{
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
 .result{
     padding: 10px;
     background-color: greenyellow;
