@@ -2,6 +2,7 @@
 <script src="math.js"></script>
 <script src="bayes.js"></script>
 <script src="lloyd.js"></script>
+<script src="k-medias.js"></script>
 <link rel="stylesheet" href="style.css">
 
 <body>
@@ -46,8 +47,20 @@
                         </div>
 
                     </div>
+            </div>
 
-
+            <div>
+                <h1>Algoritmo K-Medias</h1>
+                <label for="dataFile-input" id="data" class="button_principal"><img src="descarga.png">Choose
+                    file</label>
+                <input type="file" id="dataFile-input-kmedias"/>
+                <button id="read-data-button-kmedias" class="button_principal2"><img id="imgSelect1"
+                        src="check.png">Read</button>
+                <div>
+                    <label for="ejemplo">
+                        <input type="text" id="sampleBayes" placeholder="Introduce una muestra, por ejemplo:....." />
+                        <button onclick="init()" class="button_principal2">Verificar</button>
+                </div>
             </div>
 
         </div>
